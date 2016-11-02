@@ -1,0 +1,420 @@
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<!--    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
+	<script type="text/javascript" src="/home/varun/Desktop/Bootstrap Distribution/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Sigmar+One" rel="stylesheet">
+
+
+    <link href="css/viewProfile.css" rel="stylesheet" type="text/css">
+
+    <style type="text/css">
+
+    	#navBarMainStyle
+    	{
+    		background-color: rgba(250, 80, 70, 1);
+    		font-family: 'Oswald', sans-serif;
+       	}
+
+    	#navBarBrand
+    	{
+    		font-weight: bolder;
+	   		color: white;
+    	}
+
+    	#navBarDropdown
+    	{
+    		padding-right: 10px;
+    	}
+
+    	.navBarTextColor
+    	{
+    		color: white;
+    	}
+
+    	.viewPost
+    	{
+    		margin-left: 5px;
+    		margin-right: 5px;
+    		margin-top: 5px;
+    		margin-bottom: 5px;
+    		background-color: white;
+    		border: dotted 1px grey;
+    		height: 35%;
+    		background: white; /* For browsers that do not support gradients */
+    		background: -webkit-linear-gradient(white, #E5E5E5); /* For Safari 5.1 to 6.0 */
+    		background: -o-linear-gradient(white, #E5E5E5); /* For Opera 11.1 to 12.0 */
+		    background: -moz-linear-gradient(white, #E5E5E5); /* For Firefox 3.6 to 15 */
+		    background: linear-gradient(white, #E5E5E5); /* Standard syntax */
+		    box-shadow: 5px 5px 5px;
+			transition: box-shadow 1s;
+    		-webkit-transition: box-shadow 1s;
+    		-moz-transition: box-shadow 1s;
+    		-o-transition: box-shadow 1s;
+		}
+
+		.viewFollowers
+		{
+			margin-left: 5px;
+    		margin-right: 5px;
+    		margin-top: 5px;
+    		background-color: white;
+    		background: white; /* For browsers that do not support gradients */
+    		height: 20%;
+    		/*min-height: 326px;*/
+    		background: -webkit-linear-gradient(white, #E5E5E5); /* For Safari 5.1 to 6.0 */
+    		background: -o-linear-gradient(white, #E5E5E5); /* For Opera 11.1 to 12.0 */
+		    background: -moz-linear-gradient(white, #E5E5E5); /* For Firefox 3.6 to 15 */
+		    background: linear-gradient(white, #E5E5E5); /* Standard syntax */
+		    margin-bottom: 5px;
+		}
+
+		.viewMainPictures
+		{
+			padding: 5px 5px 5px 5px;
+			height: 30%;
+		}
+
+		.viewPost:hover
+		{
+			box-shadow: 25px 25px 20px;
+		}
+
+    	.viewPostImage
+    	{
+    		width: 100%;
+    		height: 100%;
+    		z-index: -1;
+      	}
+
+    	.viewPostTitle
+    	{
+    		color: black;
+    		font-family: 'Sigmar One', cursive;
+    		font-size: 45px;
+    		position: absolute;
+    		top: 40%;
+    		transition: top 1s;
+    		-webkit-transition: top 1s;
+    		-moz-transition: top 1s;
+    		-o-transition: top 1s;
+    	}
+
+    	.viewPost:hover .viewPostTitle
+    	{
+    		top: 0%;
+    	}
+
+    	h1
+    	{
+    		color: white;
+    	}
+
+    	.viewPostButton
+    	{
+    		width: 100%;
+    		height: 25%;
+    		margin-top: 20px;
+    	}
+  	
+
+    	#viewPostText
+    	{
+    		color: black;
+    		font-weight: bold;
+    		z-index: 1;
+    	}
+
+    	#viewPostHover
+    	{
+    		opacity: 0;
+    		margin-top: 10%;
+    		transition: opacity 1s;
+			-webkit-transition: opacity 1s;
+			-moz-transition: opacity 1s;
+			-o-transition: opacity 1s;
+			transition-delay: 0.3s;
+    		-webkit-transition-delay: 0.3s;
+    		-moz-transition-delay: 0.3s;
+    		-o-transition-delay: 0.3s;
+    		transition-timing-function: ease-in;
+    		-webkit-transition-timing-function: ease-in;
+    		-moz-transition-timing-function: ease-in;
+    	}
+
+    	.viewPost:hover #viewPostHover
+    	{
+    		opacity: 1;
+    	}
+
+    	#emptySpaceBetweenPosts
+    	{
+    		height: 50px;
+    	}
+
+    	.viewEachFollower
+    	{
+    		text-align: center;
+    	}
+
+    	.viewPostClassHeight
+    	{
+    		height: 100%;
+    	}
+
+    	.viewFollowButton
+    	{
+    		height: 5%;
+    		font-size: 20px;
+    		font-family: 'Oswald', cursive;
+    		font-weight: bold;
+    		margin-left: 35%;
+    		margin-top: 5%;
+    		margin-bottom: 5%;
+    		border: 1px orangered solid;
+    	}
+
+    </style>
+
+  </head>
+  <body style="background-color: #E5E5E5;">
+    <div class="navbar navbar-default navbar-static-top" id="navBarMainStyle">
+      <div class="container">
+        <div class="navbar-header">
+	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><span id="navBarBrand">TLP</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+          <ul class="nav navbar-nav navbar-left">
+            <li class="dropdown" id="navBarDropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span id="">Users</span> Profile<i class="fa fa-caret-down"></i></a>
+              <ul class="dropdown-menu" role="menu">
+              	<li>
+                  <a href="#">Home</a>
+                </li>
+                <li>
+                  <a href="#">Latest Petitions</a>
+                </li>
+                <li>
+                  <a href="#">Localities</a>
+                </li>
+                <li>
+                  <a href="#">People</a>
+                </li>
+
+                <li class="divider"></li>
+                <li>
+                  <a href="#">My Profile</a>
+                </li>
+                <li>
+                  <a href="#">My Petitions</a>
+                </li>
+                <li>
+                  <a href="#">My Localities</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navber-center" style="width: 50%;">
+           	 <input type="text" placeholder="Search for localities, people, events, or more..." style="margin-top: 10px; height: 30px; width: 100%;">
+          	</ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="#"><span class="navBarTextColor">Settings</span></a>
+            </li>
+            <li class="navBarTextColor">
+              <a href="#"><span class="navBarTextColor">Log Out</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1" style="background-clip: border-box;border: 5px #E5E5E5 solid; background-color: white;">
+          	<div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
+            	<img src="emptyProfilePicture.png" style="height: 30%; width: 100%; margin-top: 25px; margin-bottom: 25px;">
+            </div>
+            <br />
+            <div>
+            	<span id="name">Name goes here</span>
+              <br><span id="age">Age goes here</span>
+              <br><span id="locality">Locality goes here</span>
+              <br><span id="contact_number">Mobile Number goes here</span>
+              <br><span id="contact_email">Email address goes here</span>
+              <br>
+            </div>
+ 
+            <button class="btn btn-error viewFollowButton"> +Follow </button>
+
+          </div>
+
+          <div class="hidden-lg hidden-md" id="emptySpaceBetweenPosts"></div>
+
+         
+          <div class="col-lg-6 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0" style=""> 
+           	<div class="viewPost">
+          		<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 viewPostClassHeight">
+          			<div class="viewPostTitle">
+          				Title goes here
+          			</div>
+          			<div id="viewPostHover">
+          				<p id="viewPostText">
+	          				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit ...
+	          			</p>
+	          			<a href="#">Click here to read more</a>
+          			</div>
+          		</div>
+          		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+          			<button class="btn btn-success viewPostButton">Support</button>
+          			<button class="btn btn-info viewPostButton">Remark</button>
+          			<button class="btn btn-danger viewPostButton">Repost</button>
+          		</div>
+          	</div>
+
+          	<div id="emptySpaceBetweenPosts"></div>
+
+          	<div class="viewPost">
+          		<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 viewPostClassHeight">
+          			<div class="viewPostTitle">
+          				Title goes here
+          			</div>
+          			<div id="viewPostHover">
+	          			<p id="viewPostText">
+	          				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit ...
+	          			</p>
+	          			<a href="#">Click here to read more</a>
+          			</div>
+          		</div>
+          		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+          			<button class="btn btn-success viewPostButton">Support</button>
+          			<button class="btn btn-info viewPostButton">Remark</button>
+          			<button class="btn btn-danger viewPostButton">Repost</button>
+          		</div>
+          	</div>
+
+			<div id="emptySpaceBetweenPosts"></div>          	
+
+			<div class="viewPost">
+          		<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 viewPostClassHeight">
+          			<div class="viewPostTitle">
+          				Title goes here
+          			</div>
+          			<div id="viewPostHover">
+          				<p id="viewPostText">
+	          				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit ...
+	          			</p>
+	          			<a href="#">Click here to read more</a>
+          			</div>
+          		</div>
+          		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+          			<button class="btn btn-success viewPostButton">Support</button>
+          			<button class="btn btn-info viewPostButton">Remark</button>
+          			<button class="btn btn-danger viewPostButton">Repost</button>
+          		</div>
+          	</div>
+
+          	<div id="emptySpaceBetweenPosts"></div>
+
+
+			</div>
+
+          <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-12">
+          	<div class="viewFollowers">
+          	<h3> Followers </h3>
+
+          	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 viewEachFollower">
+          		<img src="emptyProfilePicture.png" class="viewMainPictures" />
+          		Name 1
+          	</div>
+          	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 viewEachFollower">
+          		<img src="emptyProfilePicture.png" class="viewMainPictures" />
+          		Name 2
+          	</div>
+          	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 viewEachFollower">
+          		<img src="emptyProfilePicture.png" class="viewMainPictures" />
+          		Name 3
+          	</div>
+          	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 viewEachFollower">
+          		<img src="emptyProfilePicture.png" class="viewMainPictures" />
+          		Name 4
+          	</div>
+          	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 viewEachFollower">
+          		<img src="emptyProfilePicture.png" class="viewMainPictures" />
+          		Name 5
+          	</div>
+          	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 viewEachFollower">
+          		<img src="emptyProfilePicture.png" class="viewMainPictures" />
+          		Name 6
+          	</div>
+          	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 viewEachFollower">
+          		<img src="emptyProfilePicture.png" class="viewMainPictures" />
+          		Name 7
+          	</div>
+          	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 viewEachFollower">
+          		<img src="emptyProfilePicture.png" class="viewMainPictures" />
+          		Name 8
+          	</div>
+          </div>
+
+          	<div id="emptySpaceBetweenPosts"></div>
+          	<div id="emptySpaceBetweenPosts"></div>
+          	<div id="emptySpaceBetweenPosts"></div>
+
+          	<div class="viewFollowers">
+          	<h3> Following </h3>
+
+          	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 viewEachFollower">
+          		<img src="emptyProfilePicture.png" class="viewMainPictures" />
+          		Name 1
+          	</div>
+          	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 viewEachFollower">
+          		<img src="emptyProfilePicture.png" class="viewMainPictures" />
+          		Name 2
+          	</div>
+          	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 viewEachFollower">
+          		<img src="emptyProfilePicture.png" class="viewMainPictures" />
+          		Name 3
+          	</div>
+          	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 viewEachFollower">
+          		<img src="emptyProfilePicture.png" class="viewMainPictures" />
+          		Name 4
+          	</div>
+          	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 viewEachFollower">
+          		<img src="emptyProfilePicture.png" class="viewMainPictures" />
+          		Name 5
+          	</div>
+          	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 viewEachFollower">
+          		<img src="emptyProfilePicture.png" class="viewMainPictures" />
+          		Name 6
+          	</div>
+          	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 viewEachFollower">
+          		<img src="emptyProfilePicture.png" class="viewMainPictures" />
+          		Name 7
+          	</div>
+          	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 viewEachFollower">
+          		<img src="emptyProfilePicture.png" class="viewMainPictures" />
+          		Name 8
+          	</div>
+          </div>
+
+          	<div id="emptySpaceBetweenPosts"></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+</body></html>
